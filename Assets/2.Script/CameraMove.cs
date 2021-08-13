@@ -25,7 +25,8 @@ public class CameraMove : MonoBehaviour
         if (collision.CompareTag("Room"))
         {
             isRoom = true;
-            transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y, -10f);
+            targetPosition = Vector3.Lerp(transform.position, collision.transform.position, Time.deltaTime * speed);
+            transform.position = new Vector3(targetPosition.x,targetPosition.y, -10f);
             Debug.Log("asd");
         }
     }
